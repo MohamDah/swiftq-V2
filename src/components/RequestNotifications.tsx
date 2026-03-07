@@ -67,6 +67,11 @@ export function RequestNotifications({ status }: { status: CustomerStatus }) {
     return null
   }
 
+  // Don't show on iPhone
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    return null
+  }
+
   const isLoading = isInitializing || notificationState.isLoading || isSubscribing
   const hasError = notificationState.error !== null
 
